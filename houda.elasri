@@ -1,0 +1,321 @@
+exercice 1:
+#include <iostream>
+using namespace std;
+class Mere{
+public:
+ void display ()
+ {
+ cout << "La methode display de la classe mere"<<endl;
+ }
+};
+class Fille : public Mere{
+public:
+ void display ()
+ {
+ cout << "La methode display de la classe fille"<<endl;
+ }
+};
+int main ()
+{
+ Fille e1;
+ e1.display();
+ return 0;
+}
+exercice 2:
+#include <iostream>
+using namespace std;
+class Shape
+{
+protected:
+ float x, y;
+public:
+ Shape(float xx, float yy)
+ {
+ x = xx;
+ y = yy;
+ }
+};
+class Rectangle: public Shape
+{
+public:
+ Rectangle(float xx float yy) : Shape(xx, yy) {}
+ float area()
+ {
+ return (x * y);
+ }
+};
+class Triangle: public Shape
+{
+public:
+ Triangle(float xx, float _y) : Shape(xx, yy) {}
+ float area()
+ {
+ return (x * y / 2);
+ }
+};
+int main (){
+ Rectangle rectangle(2,3);
+ Triangle triangle(2,3);
+ cout << rectangle.area() << endl; //6
+ cout << triangle.area() << endl; //3
+ return 0;
+}
+exercice 3:
+#include <iostream>
+#include<math.h>
+using namespace std;
+class Complex{
+ public:
+ double real, imag;
+ Complex(double r, double i){
+ real = r;
+ imag = i;
+}
+ };
+int main(){
+ double r1, i1;
+ cout << "Premier nombre \n";
+ cout << "Entrez la partie réelle: ";
+ cin >> r1;
+ cout << "Entrez la partie imaginaire: ";
+ cin >> i1;
+ Complex c1(r1, i1);
+ cout << "Deuxième nombre\n";
+ double r2, i2;
+ cout << "Entrez la partie réelle: ";
+ cin >> r2;
+ cout << "Entrez la partie imaginaire: ";
+ cin >> i2;
+ Complex c2(r2, i2);
+ double r = c1.real + c2.real;
+ double i = c1.imag + c2.imag;
+ cout << "La somme est "<< r << " + " << i << "i"<<endl;
+ double rp = (c1.real*c2.real) - (c1.imag*c2.imag) ;
+double ip = (c1.real*c2.imag)+(c1.imag*c2.real) ;
+cout << "Le produit est "<< rp << " + " << ip << "i";
+ return 0;
+}
+exercice 4:
+#include<iostream>
+using namespace std;
+class Myclass{
+ public:
+ Myclass();
+ ~Myclass();
+};
+Myclass::Myclass(){
+ cout<<"bonjour tous le monde!"<<endl;
+}
+Myclass::~Myclass(){
+ cout <<"programme 1!";
+}
+int main(){
+ Myclass e1;
+ return 0;
+}
+exercice 5:
+#include<iostream>
+#include<string>
+using namespace std;
+class Animal{
+ public:
+ string nom;
+ int age;
+ set_value(){
+ cout << "nom:"<<nom<<endl;
+ cout << "age:"<<age<<endl;
+ }
+};
+class Zebra: public Animal {};
+class Dolphin : public Animal {};
+ int main() {
+Zebra zebr;
+Dolphin dolph;
+zebr.nom= " monzebr ";
+zebr.age= 5;
+dolph.nom= " mondolph ";
+dolph.age= 6;
+ zebr.set_value();
+dolph.set_value();
+ return 0;
+}
+
+ exercice 6:
+ #include<iostream>
+#include<string>
+#include<ctime>
+using namespace std;
+class Personne {
+ private:
+ string nom;
+ string prenom;
+ string datenaissance;
+ public:
+ Personne(string n, string p, string dn)
+ {
+ nom = n;
+ prenom = p;
+ datenaissance = dn;
+ }
+ virtual void Afficher()
+ {
+ cout<<"Nom :"<<nom<<endl;
+ cout<<" Prénom :"<<prenom<<endl;
+ cout<<"Date de naissance :"<< datenaissance << endl;
+ }
+ };
+class Employe : Personne
+ {
+ private:
+ double salaire;
+ public:
+ Employe(string n, string p, string dn, double s) : Personne(n, p, dn)
+ {
+ salaire = s;
+ }
+ virtual void Afficher()
+ {
+ cout<<" Salaire: " << salaire<<endl;
+ }
+ };
+class Chef : Employe
+ {
+ private:
+ string service;
+ public:
+ Chef(string n, string p, string dn, double s, string ser) :
+Employe(n, p, dn, s)
+ {
+ service = ser;
+ }
+ virtual void Afficher()
+ {
+ cout<<" Service: " << service<<endl;
+ }
+ };
+class Directeur : Chef
+ {
+ private:
+ string societe;
+ public:
+ Directeur(string n, string p, string dn, double s, string ser, string
+soc) : Chef(n, p, dn,s, ser)
+ {
+ societe = soc;
+ }
+ virtual void Afficher()
+ {
+ cout<<" Société: " << societe<<endl;
+ }
+ };
+int main(){
+ Personne a = Personne("Houda", "ELasri", "31 mai 2001");
+ Employe b = Employe("Houda", "ELasri", "31 mai 2001", 10000);
+ Chef c = Chef("Houda", "ELasri", "31 mai 2001", 10000, "génie
+informatique");
+ Directeur d = Directeur("Houda", "ELasri", "31 mai 2001", 10000, "génie
+informatique", "Except Software");
+ a. Afficher();
+ b. Afficher();
+
+ c. Afficher();
+ d. Afficher();
+ return 0;
+ }
+ exercice 7:
+ #include<iostream>
+#include<math.h>
+using namespace std;
+class vecteur3d{
+ public:
+ double x;
+ double y;
+ double z;
+ vecteur3d(double a=0 , double b=0 , double c=0 ) : x(a), y(b), z(c){ }
+ void afficher(){
+ cout<<"("<<x<<","<<y<<","<<z<<")"<<endl;
+ }
+ vecteur3d somme(const vecteur3d & v) {
+ vecteur3d s;
+ s.x = x + v.x;
+ s.y = y + v.y;
+ s.z = z + v.z;
+ return s;
+ }
+ double produit(const vecteur3d & v){
+ return x*v.x + y*v.y + z*v.z;
+ }
+ bool coincide(const vecteur3d & v){
+ return (x == v.x && y == v.y && z == v.z);
+ }
+ double norme(){
+ return sqrt(x*x + y*y + z*z);
+ }
+ vecteur3d normax(vecteur3d v) {
+ if( this->norme() > v.norme()){
+ return *this;
+ }
+ return v;
+ }
+ vecteur3d * normax(vecteur3d * v) {
+ if( this->norme() > v->norme())
+ return this;
+ return v;
+ }
+ vecteur3d & normaxR(vecteur3d &v) {
+ if( this->norme() > v.norme())
+ return *this;
+ return v;
+ }
+};
+int main() {
+ vecteur3d v1(1,2,3);
+ cout << "Vecteur V1";
+ v1.afficher();
+ vecteur3d v2(5,3,8);
+ cout << "Vecteur V2";
+ v2.afficher();
+ cout<<endl;
+ cout << "La somme des deux vecteurs est : ";
+ (v1.somme(v2)).afficher();
+ cout << "Le produit scalaire des deux vecteurs est : " << v1.produit(v2);
+ cout<<endl;
+ cout << "Copier le vecteur V1 dans V3:" ;
+ vecteur3d v3(v1);
+ cout << "Vecteur V3";
+ v3.afficher();
+ if(v1.coincide(v3))
+ cout << "Les vecteurs v1 et v3 coincident " ;
+ else
+ cout << "Les vecteurs v1 et v3 ne coincident pas " ;
+ cout<<endl;
+ cout << "Le vecteur qui a la plus grande norme est (par valeur): ";
+ (v1.normax(v2)).afficher();
+ cout << "Le vecteur qui a la plus grande norme est (par adresse): ";
+ (v1.normax(&v2))->afficher();
+ cout << "Le vecteur qui a la plus grande norme est (par reference) :";
+ (v1.normaxR(v2)).afficher();
+ cout<<endl;
+ return 0;
+}
+exerice 9 :
+#include<iostream>
+using namespace std;
+class Test{
+ public:
+ static int count;
+ void call(){
+ cout<<"bonjour madame"<<endl;
+ count++;
+ }
+};
+int Test::count=0;
+int main(void){
+ Test a, b, c;
+ a.call();
+ b.call();
+ c.call();
+
+ cout<<"la fonction call() est appelee: "<<Test::count<<" fois";
+ return 0;
+}
