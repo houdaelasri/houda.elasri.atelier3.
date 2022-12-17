@@ -1,0 +1,230 @@
+Exercice 1 :
+#include <iostream>
+#include <math.h>
+using namespace std;
+class Complex
+{
+public:
+ double real, imag;
+ Complex(double r, double i)
+ {
+ real = r;
+ imag = i;
+ }
+double operator+(Complex);
+double operator*(Complex);
+double operator-(Complex);
+double operator/(Complex);
+};
+double Complex::operator+(Complex r)
+{
+ cout<< "la somme est:" << (real+r.real)<<"+"<<(imag+r.imag)<<"i"<<endl;
+
+};
+double Complex::operator-(Complex r)
+{
+ cout<< "la sustraction est:" << (real-r.real)<<"+("<<(imagr.imag)<<")i"<<endl;
+
+};
+double Complex::operator*(Complex r)
+{
+ cout<< "la multiplication est:" << ((real*r.real)-
+(imag*r.imag))<<"+"<<((real*r.imag)+(r.real*imag))<<"i"<<endl;
+
+};
+double Complex::operator/(Complex r)
+{
+ cout<< "la division est:" <<
+(((real*r.real)+(imag*r.imag))/(pow(r.real,2)+pow(r.imag,2)));
+cout<<"+"<<(((r.real*imag)-
+(real*r.imag))/(pow(r.real,2)+pow(r.imag,2)))<<"i"<<endl;
+
+};
+int main()
+{
+ double r1, i1;
+ cout << "Premier nombre complexe :\n";
+ cout << "Entrez la partie reelle: ";
+ cin >> r1;
+ cout << "Entrez la partie imaginaire: ";
+ cin >> i1;
+ Complex c1(r1, i1);
+ cout << "Deuxieeme nombre complexe :\n";
+ double r2, i2;
+ cout << "Entrez la partie reelle: ";
+ cin >> r2;
+ cout << "Entrez la partie imaginaire: ";
+ cin >> i2;
+ Complex c2(r2,i2);
+ c1 +c2;
+ c1-c2;
+ c1 * c2;
+ c1/c2;
+ return 0;
+}
+Exercice 2 :
+#include<iostream>
+using namespace std;
+int main(){
+ char tab[13];
+ cout<<"entrez une chaîne de caractères contenant une date (JJ/MM/AAAA) et une heure
+(HH:MM) sous la forme JJMMAAAAHHMM"<<endl;
+ cin>> tab;
+ cout<< "la date: ("<<tab[0]<<tab[1]<<"/"<<tab[2]<<tab[3]<<"/"<<tab[4]
+<<tab[5]<<tab[6]<<tab[7]<<")"<<endl;
+ cout<< "l'heure : ("<<tab[8]<<tab[9]<<":"<<tab[10]<<tab[11]<<")"<<endl;
+return 0;
+}
+Exercice 3 :
+#include<iostream>
+#include<algorithm>
+#include<list>
+using namespace std;
+void showlist(list <int> l)
+{
+list <int> :: iterator it;
+for(it = l.begin(); it != l.end(); ++it)
+cout <<*it<< " - " ;
+cout << '\n';
+}
+int main(){
+list<int> l;
+l.push_back(4);
+l.push_back(6);
+l.push_back(2);
+l.push_back(0);
+l.push_back(5);
+l.push_back(9);
+l.push_back(3);
+l.push_back(8);
+cout<<"afficher la liste:"<<endl;
+showlist(l);
+cout<< "la liste trié :"<<endl;
+l.sort();
+showlist(l);
+return 0;
+}
+Exercice 4:
+#include<iostream>
+#include<algorithm>
+#include<list>
+#include<string>
+using namespace std;
+void showlist(list <string> V)
+{
+list <string> :: iterator it;
+for(it = V.begin(); it != V.end(); ++it)
+cout <<*it<< " " ;
+cout << '\n';
+};
+int main(){
+list<string>V;
+string nom;
+string prenom;
+string age;
+ cout<<"entrer votre nom:" <<endl;
+ cin>> nom;
+ cout<<"entrer votre prenom:" <<endl;
+ cin>> prenom;
+ cout<<"entrer votre age:" <<endl;
+ cin>>age;
+ V.push_back(nom);
+ V.push_back(prenom);
+ V.push_back(age);
+showlist(V);
+cout<<"liste trié:"<<endl;
+ V.sort();
+showlist(V);
+}
+Exercice 4:
+#include<iostream>
+#include<algorithm>
+#include<list>
+#include<string>
+using namespace std;
+void showlist(list <string> V)
+{
+list <string> :: iterator it;
+for(it = V.begin(); it != V.end(); ++it)
+cout <<*it<< " " ;
+cout << '\n';
+};
+int main(){
+list<string>V;
+string nom;
+string prenom;
+string age;
+ cout<<"entrer votre nom:" <<endl;
+ cin>> nom;
+ cout<<"entrer votre prenom:" <<endl;
+ cin>> prenom;
+ cout<<"entrer votre age:" <<endl;
+ cin>>age;
+ V.push_back(nom);
+ V.push_back(prenom);
+ V.push_back(age);
+showlist(V);
+cout<<"liste trié:"<<endl;
+ V.sort();
+showlist(V);
+}
+Exercice 4:
+#include<iostream>
+#include<algorithm>
+#include<list>
+#include<string>
+using namespace std;
+void showlist(list <string> V)
+{
+list <string> :: iterator it;
+for(it = V.begin(); it != V.end(); ++it)
+cout <<*it<< " " ;
+cout << '\n';
+};
+int main(){
+list<string>V;
+string nom;
+string prenom;
+string age;
+ cout<<"entrer votre nom:" <<endl;
+ cin>> nom;
+ cout<<"entrer votre prenom:" <<endl;
+ cin>> prenom;
+ cout<<"entrer votre age:" <<endl;
+ cin>>age;
+ V.push_back(nom);
+ V.push_back(prenom);
+ V.push_back(age);
+showlist(V);
+cout<<"liste trié:"<<endl;
+ V.sort();
+showlist(V);
+}
+Exercice 5:
+#include<iostream>
+#include<algorithm>
+#include<set>
+using namespace std;
+void affiche(set<int, greater<int>> S){
+set<int, greater<int>> :: iterator it;
+ for (it=S.begin(); it!=S.end(); it++)
+ {
+ cout<<*it <<" " << endl;
+}
+ };
+int test(set<int, greater<int>> S){
+int x ;
+cout<< "donner la valeur que vous voulez inserer:"<<endl;
+cin>> x;
+auto t=S.insert(x);
+cout<< "la valeur bouléen est:"<<endl;
+cout<< t.second <<endl;
+};
+int main(){
+set<int, greater<int>> S;
+for (int i = 0; i <= 100; i++)
+{
+ S.insert(i);
+}
+test(S);
+}
